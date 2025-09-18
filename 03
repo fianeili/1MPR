@@ -1,0 +1,10 @@
+import math
+
+x=int(input("Ievadi x: "))
+y=int(input("Ievadi y: "))
+a=x/y
+b=x//y
+c=x%y
+print(a)
+print(b)
+print(c)
