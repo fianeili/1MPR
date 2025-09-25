@@ -1,0 +1,32 @@
+import math
+import tkinter as tk
+
+def funkcija():
+    x=int(ievad_x.get())
+    y=int(ievad_y.get()) 
+    funk=(x-y)
+    resultFunkcija.config(text=f"{funk:.2f}")
+    
+
+root= tk.Tk()
+root.geometry("500x500")
+
+tk.Label(root,text="1. uzdevums",bg="pink").pack()
+tk.Label(root,text="").pack()
+
+tk.Label(root,text="Ievadi x:").place(x=40,y=20)
+ievad_x=tk.Entry(root)
+ievad_x.place(x=20,y=60)
+
+tk.Button(root,text="-",command=funkcija,width=1).place(x=150,y=60)
+
+tk.Label(root,text="Ievadi y:", compound="left").place(x=180,y=20)
+ievad_y=tk.Entry(root)
+ievad_y.place(x=180,y=60)
+
+tk.Button(root,text="=",command=funkcija,width=1).place(x=330,y=60)
+
+resultFunkcija=tk.Label(root,text="")
+resultFunkcija.place(x=350,y=60)
+
+root.mainloop()
