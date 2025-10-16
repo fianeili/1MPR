@@ -1,0 +1,58 @@
+sv=input("ievadi romieši tris zimj")
+sv= sv.strip().upper() 
+G= len(sv)
+if G!=3:
+    print("nd")
+    exit()
+    
+else:
+    A=sv[0]
+    B=sv[1]
+    C=sv[2]
+    
+    match A:
+        case "I" :
+            a= 1
+        case "V" :
+            a = 5
+        case "X" :
+            a= 10
+        case "L" :
+            a = 50
+        case "C" :
+            a = 100
+        case "D" :
+            a = 500
+        case "M" :
+            a= 1000
+    match B:
+        case "I" :
+            b= 1
+        case "V" :
+            b = 5
+        case "X" :
+            b= 10
+        case "L" :
+            b = 50
+        case "C" :
+            b = 100
+        case "D" :
+            b = 500
+        case "M" :
+            b= 1000    
+     
+    match C:
+        case "I" :
+            c= 1
+        case "V" :
+            c = 5
+        case "X" :
+            c= 10
+        case "L" :
+            c = 50
+        case "C" :
+            c = 100
+        case "D" :
+            c = 500
+        case "M" :
+            c= 1000    
