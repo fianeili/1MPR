@@ -1,0 +1,42 @@
+import random
+import tkinter as tk
+
+def rutinas():
+    # horizontālās līnijas
+    for i in range(10, 501, 10):
+        krasa = random.randint(0, 16777215)
+        krasa3 = f"#{krasa:06x}"
+        kanva.create_line(10, i, 501, i, fill=krasa3)
+    
+    # vertikālās līnijas
+    for k in range(10, 501, 10):
+        krasa = random.randint(0, 16777215)
+        krasa3 = f"#{krasa:06x}"
+        kanva.create_line(k, 10, k, 501, fill=krasa3) 
+
+        
+      
+        
+def krs(): 
+    kanva.create_rectangle(10, 10,1000, 1000,
+    fill="blue", outline="red")    
+       
+def notirit(): # funkcija kanvas satura dzēšanai
+    kanva.delete("all") 
+    
+logs = tk.Tk()
+logs.geometry("700x600") 
+
+kanva = tk.Canvas(logs, bg="white", height=500, width=500)
+kanva.place(x=100, y=10)
+
+poga1= tk.Button(logs, text="Rūtiņas", command=rutinas)
+poga1.place(x=10, y=10)
+
+poga2= tk.Button(logs, text="krs", command=krs)
+poga2.place(x=10, y=50)
+
+poga3 = tk.Button(logs, text="Notīrīt", command=notirit)
+poga3.place(x=10, y=90)
+
+logs.mainloop()
