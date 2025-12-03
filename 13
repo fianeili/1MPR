@@ -1,0 +1,163 @@
+def vai_reals(max, uzvedne):
+    x = input(f"{uzvedne} ===> ")
+    x = x.strip()
+    sk = 0
+    while True:
+        try:
+            y = float(x)
+        except:
+            if sk >= max:
+                print(f"Jūs {max} reizes kļūdījāties. Beidzam sadarbību!")
+                exit()
+            else:
+                x = input("Nekorekta ievade, atkārtojiet ievadi ===> ")
+                x = x.strip()
+                sk = sk + 1
+        else:
+            return y
+
+
+def vai_vesels(x):
+    return int(x) == x
+
+
+def vai_naturals(x):
+    return vai_vesels(x) and x > 0
+
+
+def main():
+    x = vai_reals(3, "Ievadi skaitli")
+    print("Ievadītais skaitlis IR reāls skaitlis.")
+
+    if vai_vesels(x) == True:
+        print("Tas IR vesels skaitlis.")
+        if vai_naturals(x) == True:
+            print("Tas IR arī naturāls skaitlis.")
+        else:
+            print("Tas NAV naturāls skaitlis.")
+    else:
+        print("Tas NAV vesels skaitlis.")
+        print("Līdz ar to tas NAV arī naturāls skaitlis.")
+
+
+if __name__ == "__main__":
+    main()
+
+
+
+def parbaudit_vai_naturals(max, uzvedne):
+    sk = 0
+    while True:
+        x = input(f"{uzvedne} ===> ").strip()
+        try:
+            y = int(x)
+            if y <= 0:
+                raise ValueError            # nav naturāls skaitlis
+        except:
+            sk += 1
+            if sk >= max:
+                print(f"Jūs {max} reizes kļūdījāties. Beidzam sadarbību!")
+                exit()                     # IZBEIDZ PROGRAMMU, NEVIS None
+            else:
+                print("Nekorekta ievade, atkārtojiet ievadi!")
+        else:
+            return y
+
+
+def lkd(a, b):
+    while b != 0:
+        c = a % b
+        a = b
+        b = c
+    return a
+
+
+def mkd(a, b):
+    return a * b // lkd(a, b)
+
+
+def galvena():
+
+    # 5 skaitļi bez saraksta un bez None
+    a = parbaudit_vai_naturals(3, "Ievadi 1. naturālo skaitli")
+    b = parbaudit_vai_naturals(3, "Ievadi 2. naturālo skaitli")
+    c = parbaudit_vai_naturals(3, "Ievadi 3. naturālo skaitli")
+    d = parbaudit_vai_naturals(3, "Ievadi 4. naturālo skaitli")
+    e = parbaudit_vai_naturals(3, "Ievadi 5. naturālo skaitli")
+
+    # LKD un MKD aprēķins (tava formula)
+    l = lkd(a, lkd(b, lkd(c, lkd(d, e))))
+    m = mkd(a, mkd(b, mkd(c, mkd(d, e))))
+
+    print("Ievadītie skaitļi:", a, b, c, d, e)
+    print("LKD =", l)
+    print("MKD =", m)
+
+
+if __name__ == "__main__":
+    galvena()
+
+
+import math
+
+def parbaudit_vai_naturals(max, uzvedne):
+    sk = 1
+    x = input(f"{uzvedne} ===> ").strip()
+
+    while True:
+        try:
+            y = int(x)
+        except:
+            print("Jāievada vesels skaitlis!")
+            if sk >= max:
+                print(f"Jūs {max} reizes kļūdījāties. Beidzam darbu!")
+                exit()
+            sk += 1
+            x = input("Atkārtojiet ievadi ===> ").strip()
+        else:
+            if y <= 0:
+                print("Jāievada naturāls skaitlis (>0)!")
+                if sk >= max:
+                    print(f"Jūs {max} reizes kļūdījāties. Beidzam darbu!")
+                    exit()
+                sk += 1
+                x = input("Atkārtojiet ievadi ===> ").strip()
+            else:
+                return y
+
+
+def ir_pirmskaitlis(n):
+    if n <= 1:
+        return False
+    if n < 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+
+    m = int(math.sqrt(n)) + 1
+
+    for i in range(5, m, 6):
+        if n % i == 0:
+            return False
+        if n % (i + 2) == 0:
+            return False
+
+    return True
+
+
+def galvena():
+    n = parbaudit_vai_naturals(3, "Ievadi naturālu skaitli N")
+
+    if n < 5:
+        print("Draudzīgie pirmskaitļu pāri nav atrasti.")
+    else:
+        print(f"Draudzīgie pirmskaitļu pāri no 1 līdz {n} ir:")
+        ieprieksejais = 3
+        for i in range(5, n + 1, 2):
+            if ir_pirmskaitlis(i):
+                if i - ieprieksejais == 2:
+                    print(f"{ieprieksejais} un {i}")
+                ieprieksejais = i
+
+
+galvena()
